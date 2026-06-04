@@ -11,14 +11,13 @@ export default function Header() {
       <div className="wrap bar">
         <Link
           href="/"
-          className="brand"
           onClick={() => setOpen(false)}
           aria-label="The Agenda Company home"
-          style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}
+          style={{ display: "flex", alignItems: "center", gap: "0.7rem", textDecoration: "none" }}
         >
           <svg
-            width="30"
-            height="30"
+            width="36"
+            height="36"
             viewBox="0 0 100 100"
             fill="none"
             aria-hidden="true"
@@ -33,9 +32,34 @@ export default function Header() {
             <circle cx="31.8" cy="65" r="3" fill="currentColor" />
             <circle cx="29.2" cy="74" r="3" fill="currentColor" />
           </svg>
-          <span>
-            <b>The Agenda Company</b>
-            <span className="dot">.</span>
+
+          <span aria-hidden="true" style={{ width: "1px", height: "34px", background: "var(--line-strong)" }} />
+
+          <span style={{ display: "flex", flexDirection: "column", justifyContent: "center", lineHeight: 1 }}>
+            <span
+              style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontWeight: 600,
+                fontSize: "1.25rem",
+                letterSpacing: "0.09em",
+                color: "var(--gold)",
+              }}
+            >
+              THE AGENDA
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-body), system-ui, sans-serif",
+                fontWeight: 600,
+                fontSize: "0.55rem",
+                letterSpacing: "0.42em",
+                color: "var(--cream)",
+                marginTop: "3px",
+                paddingLeft: "2px",
+              }}
+            >
+              COMPANY
+            </span>
           </span>
         </Link>
 

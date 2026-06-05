@@ -6,7 +6,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 export const metadata = {
   title: "Contact The Agenda Company | Plan a Professional Event",
   description:
-    "Start a conversation about your next professional gathering. Tell us what you're trying to accomplish and we'll help shape the agenda.",
+    "Start a conversation about your next professional gathering. Tell us what you're trying to accomplish and we'll help shape your agenda.",
   alternates: { canonical: "/contact" },
 };
 
@@ -24,7 +24,7 @@ export default function ContactPage() {
         <div className="wrap">
           <Breadcrumb trail={trail} />
           <Kicker>Contact</Kicker>
-          <h1>Let&rsquo;s shape the agenda.</h1>
+          <h1>Let&rsquo;s shape your agenda.</h1>
           <p className="answer-block">
             Contact The Agenda Company to plan a professional meeting, leadership gathering, curated field
             experience, learning event, or recurring series. We&rsquo;re based in Phoenix, Arizona and work with

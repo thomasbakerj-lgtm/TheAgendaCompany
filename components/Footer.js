@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-col">
             <h2 className="serif" style={{ fontSize: "var(--step-2)", marginBottom: "1rem" }}>
-              Let&rsquo;s shape the agenda.
+              Let&rsquo;s shape your agenda.
             </h2>
             <p style={{ color: "var(--stone)", maxWidth: "34ch" }}>
               A boutique professional event management firm in Phoenix, Arizona. The agenda is the strategy.

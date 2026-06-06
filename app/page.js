@@ -23,15 +23,15 @@ const FAQS = [
 ];
 
 const MARK = (
-  <svg className="hero-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-    <path d="M74 26 A37 37 0 1 0 74 78" stroke="#c9a24e" strokeWidth="1" strokeLinecap="round" />
-    <path d="M32 82 L50 19 L68 82" stroke="#c9a24e" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-    <line x1="39.7" y1="55" x2="60.3" y2="55" stroke="#c9a24e" strokeWidth="1" />
-    <line x1="36.9" y1="65" x2="63.1" y2="65" stroke="#c9a24e" strokeWidth="1" />
-    <line x1="34.3" y1="74" x2="65.7" y2="74" stroke="#c9a24e" strokeWidth="1" />
-    <circle cx="34.6" cy="55" r="2" fill="#c9a24e" />
-    <circle cx="31.8" cy="65" r="2" fill="#c9a24e" />
-    <circle cx="29.2" cy="74" r="2" fill="#c9a24e" />
+  <svg className="hero-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true" style={{ opacity: 0.28 }}>
+    <path d="M74 26 A37 37 0 1 0 74 78" stroke="#d8b66a" strokeWidth="1.4" strokeLinecap="round" />
+    <path d="M32 82 L50 19 L68 82" stroke="#d8b66a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <line x1="39.7" y1="55" x2="60.3" y2="55" stroke="#d8b66a" strokeWidth="1.4" />
+    <line x1="36.9" y1="65" x2="63.1" y2="65" stroke="#d8b66a" strokeWidth="1.4" />
+    <line x1="34.3" y1="74" x2="65.7" y2="74" stroke="#d8b66a" strokeWidth="1.4" />
+    <circle cx="34.6" cy="55" r="2.4" fill="#d8b66a" />
+    <circle cx="31.8" cy="65" r="2.4" fill="#d8b66a" />
+    <circle cx="29.2" cy="74" r="2.4" fill="#d8b66a" />
   </svg>
 );
 

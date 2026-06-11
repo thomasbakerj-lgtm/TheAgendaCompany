@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Newsreader, Hanken_Grotesk, Cormorant } from "next/font/google";
+import { Newsreader, Hanken_Grotesk, Cormorant, Sora, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -29,6 +29,20 @@ const cormorant = Cormorant({
   display: "swap",
 });
 
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export const metadata = {
   metadataBase: new URL(SITE.url),
   title: {
@@ -51,7 +65,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${cormorant.variable} ${sora.variable} ${inter.variable}`}>
       <body>
         <JsonLd data={[organizationSchema(), websiteSchema(), personSchema()]} />
         <Header />

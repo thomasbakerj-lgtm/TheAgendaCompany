@@ -2,8 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ARTICLES } from "@/lib/articles";
 import { SERVICE_PAGES } from "@/lib/servicePages";
-import { SITE } from "@/lib/site";
-import { Kicker, Faq, CtaBand, Breadcrumb } from "@/components/ui";
+import { SITE, CTA } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 
@@ -51,48 +50,62 @@ export default function ArticlePage({ params }) {
   return (
     <>
       <JsonLd data={[articleSchema, faqSchema(a.faqs), breadcrumbSchema(trail)]} />
+      <div className="sf-home">
 
-      <section className="page-intro">
-        <div className="wrap" style={{ maxWidth: "780px" }}>
-          <Breadcrumb trail={trail} />
-          <Kicker>{a.category}</Kicker>
-          <h1 style={{ fontSize: "var(--step-4)" }}>{a.title}</h1>
-          <p className="answer-block">{a.summary}</p>
-        </div>
-      </section>
+        <section className="ag-pagehero">
+          <div className="blob b1" /><div className="blob b2" />
+          <div className="wrap" style={{ maxWidth: "820px" }}>
+            <p className="ag-crumb"><Link href="/">Home</Link><span className="sep">/</span><Link href="/the-agenda">The Agenda</Link><span className="sep">/</span><span className="cur">{a.category}</span></p>
+            <span className="pill-lbl" style={{ marginTop: "1.1rem" }}>{a.category}</span>
+            <h1>{a.title}</h1>
+            <p className="ag-intro">{a.summary}</p>
+          </div>
+        </section>
 
-      <hr className="rule" />
+        <article className="sec">
+          <div className="wrap">
+            <div className="ag-article">
+              {a.body.map((blk, i) => (
+                <div key={i}>
+                  {blk.h && <h2>{blk.h}</h2>}
+                  <p>{blk.p}</p>
+                </div>
+              ))}
 
-      <article className="section">
-        <div className="wrap" style={{ maxWidth: "720px" }}>
-          {a.body.map((blk, i) => (
-            <div key={i}>
-              {blk.h && <h2 style={{ fontSize: "var(--step-2)", marginTop: i === 0 ? 0 : "2.5rem", marginBottom: "1rem" }}>{blk.h}</h2>}
-              <p style={{ fontSize: "var(--step-1)", lineHeight: 1.65 }}>{blk.p}</p>
+              <h2>Questions</h2>
+              <div className="ag-faq">
+                {a.faqs.map((f) => (
+                  <div className="ag-faqitem" key={f.q}>
+                    <h4>{f.q}</h4>
+                    <p>{f.a}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="ag-related">
+                {relatedService && (
+                  <Link href={`/services/${a.related.service}`}>Service: {relatedService.title}</Link>
+                )}
+                {relatedPost && (
+                  <Link href={`/the-agenda/${a.related.post}`}>Read: {relatedPost.title}</Link>
+                )}
+              </div>
             </div>
-          ))}
-
-          <div style={{ marginTop: "3rem" }}>
-            <h2 style={{ fontSize: "var(--step-2)", marginBottom: "0.5rem" }}>Questions</h2>
-            <Faq items={a.faqs} />
           </div>
+        </article>
 
-          <div style={{ marginTop: "3rem", display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
-            {relatedService && (
-              <Link className="tlink" href={`/services/${a.related.service}`}>
-                Service: {relatedService.title}
-              </Link>
-            )}
-            {relatedPost && (
-              <Link className="tlink" href={`/the-agenda/${a.related.post}`}>
-                Read: {relatedPost.title}
-              </Link>
-            )}
+        <section className="sec cta">
+          <div className="cb c1" /><div className="cb c2" /><div className="cb c3" />
+          <div className="wrap">
+            <span className="pill-lbl" style={{ background: "rgba(255,255,255,.15)", color: "#fff" }}>Start the conversation</span>
+            <h2 style={{ marginTop: "1rem" }}>Let&rsquo;s shape your agenda.</h2>
+            <p>Tell us what you&rsquo;re trying to accomplish and what would make this gathering worth the time.</p>
+            <Link className="btn white" href={CTA.primary.href}>Let&rsquo;s talk &rarr;</Link>
+            <p className="reassure">A conversation, not a pitch. We typically reply within one business day.</p>
           </div>
-        </div>
-      </article>
+        </section>
 
-      <CtaBand />
+      </div>
     </>
   );
 }

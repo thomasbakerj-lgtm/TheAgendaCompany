@@ -8,17 +8,17 @@ export default function HomeMotion() {
     if (!root) return;
 
     // Accordion (method)
-    const rows = Array.from(root.querySelectorAll("#sf-agenda .arow"));
+    const rows = Array.from(root.querySelectorAll("#sf-agenda .ag-arow"));
     const hover = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
     const setBody = (r) => {
-      const b = r.querySelector(".arow-body");
-      const inner = b.querySelector(".arow-inner");
+      const b = r.querySelector(".ag-arow-body");
+      const inner = b.querySelector(".ag-arow-inner");
       b.style.maxHeight = r.classList.contains("open") ? inner.offsetHeight + "px" : "0";
     };
     const openRow = (i) => rows.forEach((r, j) => { r.classList.toggle("open", j === i); setBody(r); });
     const cleanups = [];
     rows.forEach((r, i) => {
-      const head = r.querySelector(".arow-head");
+      const head = r.querySelector(".ag-arow-head");
       if (hover) {
         const onEnter = () => openRow(i);
         r.addEventListener("mouseenter", onEnter);
@@ -41,7 +41,7 @@ export default function HomeMotion() {
     const revIO = new IntersectionObserver((es) => {
       es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); revIO.unobserve(e.target); } });
     }, { threshold: 0.12 });
-    root.querySelectorAll(".reveal").forEach((el) => revIO.observe(el));
+    root.querySelectorAll(".ag-reveal").forEach((el) => revIO.observe(el));
 
     // Stat counters
     const stats = root.querySelector("#sf-stats");

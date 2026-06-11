@@ -1,275 +1,91 @@
 import Link from "next/link";
-import { SERVICES, DIFFERENTIATORS, POSTS, CTA } from "@/lib/site";
-import { Kicker, Faq } from "@/components/ui";
+import { SERVICES, CTA } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
-import { faqSchema } from "@/lib/schema";
-import AgendaMethodInteractive from "@/components/AgendaMethodInteractive";
-import ProofStats from "@/components/ProofStats";
+import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = {
-  title: "Professional Event Management in Phoenix, AZ",
+  title: "Professional Event Management Services",
   description:
-    "The Agenda Company is a Phoenix-based boutique event management firm designing agenda-led professional meetings, curated tours, learning events, and gathering series built for measurable outcomes.",
-  alternates: { canonical: "/" },
+    "Agenda strategy, professional meetings, curated field experiences, learning events, and gathering series — boutique, outcome-driven event management in Phoenix, AZ.",
+  alternates: { canonical: "/services" },
 };
 
 const FAQS = [
-  {
-    q: "What does The Agenda Company do?",
-    a: "We're a boutique professional event management firm in Phoenix, Arizona. We design agenda-led meetings, curated field experiences, learning events, and recurring gathering series, and we manage them end to end — always starting with the agenda rather than the venue.",
-  },
-  {
-    q: "What makes The Agenda Company different from a typical event planner?",
-    a: "A traditional planner starts with logistics. We start with strategy: purpose, audience, flow, and the outcome the gathering should produce. We pair editorial-grade programming with full event management and post-event follow-through.",
-  },
-  {
-    q: "Where is The Agenda Company located?",
-    a: "We're based in Phoenix, Arizona and serve Greater Phoenix — including Scottsdale, Tempe, Mesa, and Chandler — as well as national professional clients.",
-  },
-  {
-    q: "Who does The Agenda Company work with?",
-    a: "Organizations, associations, institutions, leadership teams, professional communities, and companies that need purposeful gatherings with clear outcomes.",
-  },
+  { q: "Do you only work on single events, or ongoing programs?", a: "Both. We design and manage one-off gatherings as well as recurring series and community programs." },
+  { q: "Can you handle logistics as well as strategy?", a: "Yes — we offer full end-to-end management, with logistics always in service of the agenda." },
+  { q: "Do you work outside Phoenix?", a: "Yes. We're based in Phoenix and serve Greater Phoenix as well as national professional clients." },
 ];
 
-export default function Home() {
+const trail = [
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services" },
+];
+
+export default function ServicesHub() {
   return (
     <>
-      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={[faqSchema(FAQS), breadcrumbSchema(trail)]} />
+      <div className="sf-home">
 
-      {/* 1 — Hero */}
-      <section className="hero">
-        <div className="wrap">
-          <p className="kicker rise">Boutique professional event management · Phoenix, AZ</p>
-          <h1 className="rise rise-2">Professional gatherings, designed around the agenda.</h1>
-          <p className="lede rise rise-3">
-            The Agenda Company is a Phoenix-based boutique event management firm designing professional
-            meetings, curated field experiences, learning events, and gathering series that create clarity,
-            connection, and measurable follow-through.
-          </p>
-          <div className="btn-row rise rise-4">
-            <Link className="btn" href={CTA.primary.href}>{CTA.primary.label}</Link>
-            <Link className="btn btn--ghost" href={CTA.secondary.href}>{CTA.secondary.label}</Link>
+        <section className="ag-pagehero">
+          <div className="blob b1" /><div className="blob b2" />
+          <div className="wrap">
+            <p className="ag-crumb"><Link href="/">Home</Link><span className="sep">/</span><span className="cur">Services</span></p>
+            <span className="pill-lbl" style={{ marginTop: "1.1rem" }}>Services</span>
+            <h1>Event management, <span className="grad-text">designed around the agenda</span>.</h1>
+            <p className="ag-intro">
+              Five connected services &mdash; from agenda strategy to full production. Each starts with the agenda and is built toward a measurable outcome.
+            </p>
           </div>
-          <div className="hero-meta rise rise-4">
-            <span>Agenda-first design</span>
-            <span>Outcome-driven</span>
-            <span>Senior-led</span>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 2 — Market problem + animated proof */}
-      <section className="section panel">
-        <div className="wrap">
-          <div className="split">
-            <div className="label-col">
-              <Kicker>The problem</Kicker>
-              <h2>Most events fill a room. Few prove they were worth it.</h2>
-            </div>
-            <div>
-              <p>
-                Companies are gathering again with confidence — but optimism isn&rsquo;t the same as proof. Most
-                gatherings still end with a full room, good energy, and no clear answer when leadership asks what
-                actually changed.
-              </p>
-              <p style={{ marginBottom: 0 }}>That gap is the reason The Agenda Company exists.</p>
+        <section className="sec">
+          <div className="wrap">
+            <p style={{ maxWidth: "62ch", marginBottom: "2.5rem", color: "var(--ink2)" }}>
+              The U.S. corporate event services market is projected to nearly double from $29.49 billion in 2024 to $57.86 billion by 2035 <span style={{ color: "var(--muted)" }}>(Allied Market Research, 2025)</span> &mdash; and the organizations driving that spend increasingly expect gatherings to prove their value.
+            </p>
+            <div className="ag-cards">
+              {SERVICES.map((s, i) => (
+                <div className="ag-card" key={s.slug}>
+                  <span className="ag-cn">{`0${i + 1}`}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.short}</p>
+                  <Link className="ag-explore" href={`/services/${s.slug}`}>Explore &rarr;</Link>
+                </div>
+              ))}
             </div>
           </div>
-          <ProofStats />
-        </div>
-      </section>
+        </section>
 
-      {/* 3 — What we do */}
-      <section className="section">
-        <div className="wrap split">
-          <div className="label-col">
-            <Kicker>What we do</Kicker>
-            <h2>We start with the agenda, not the venue.</h2>
-          </div>
-          <div>
-            <p className="lede" style={{ marginBottom: "1.5rem" }}>
-              We design agenda-led professional meetings, curated field experiences, learning events, and
-              recurring gathering series.
-            </p>
-            <p style={{ marginBottom: 0 }}>
-              Before a room is booked or a run of show is built, we clarify why the gathering exists, who needs
-              to be in it, what should happen while everyone&rsquo;s together, and what progress should follow.
-              We handle the logistics — but logistics are in service of the agenda, not the other way around.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 4 — Services */}
-      <section className="section panel">
-        <div className="wrap">
-          <Kicker>Services</Kicker>
-          <h2 style={{ maxWidth: "22ch", marginBottom: "2.5rem" }}>
-            How we help organizations gather with purpose.
-          </h2>
-          <div className="grid grid-3">
-            {SERVICES.map((s) => (
-              <div className="card" key={s.slug}>
-                <h3>{s.title}</h3>
-                <p>{s.short}</p>
-                <Link className="tlink" href={`/services/${s.slug}`}>Explore</Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5 — Interactive Agenda Method */}
-      <section className="section">
-        <div className="wrap">
-          <Kicker>The Agenda Method</Kicker>
-          <h2 style={{ maxWidth: "20ch", marginBottom: "0.75rem" }}>
-            A six-step method for gatherings that matter.
-          </h2>
-          <p className="muted" style={{ marginBottom: "2.5rem", maxWidth: "52ch" }}>
-            Select a step to see how we design it. The agenda is the architecture for the entire experience.
-          </p>
-          <AgendaMethodInteractive />
-          <div className="btn-row">
-            <Link className="btn btn--ghost" href="/method">{CTA.secondary.label}</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 6 — Why us */}
-      <section className="section panel">
-        <div className="wrap split">
-          <div className="label-col">
-            <Kicker>Why us</Kicker>
-            <h2>Boutique, senior-led, and built for outcomes.</h2>
-            <p className="muted" style={{ marginTop: "1.5rem" }}>
-              Not a bloated agency. Not a party planner. Not a self-serve platform. A calm, precise, senior-led
-              firm that treats your gathering as a business tool.
-            </p>
-          </div>
-          <ul className="checklist">
-            {DIFFERENTIATORS.map((d) => (<li key={d}>{d}</li>))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 7 — Founder */}
-      <section className="section">
-        <div className="wrap split">
-          <div className="label-col">
-            <Kicker>Founder</Kicker>
-            <h2>Founded by an editor who became an events professional.</h2>
-          </div>
-          <div>
-            <p>
-              The Agenda Company was founded by Jessica Barreras, an editor turned events professional with
-              more than 15 years of experience. Her background pairs editorial discipline — sequencing ideas,
-              shaping narrative, managing contributors, building flow — with hands-on professional events
-              experience spanning gatherings and institutions including SupplySide West, Channel Partners
-              Conference &amp; Expo, Channel Partners Evolution, Petfood 2.0, Data Center World, IoT World, the
-              Japanese Friendship Garden, and Arizona State University.
-            </p>
-            <p style={{ marginBottom: "1.5rem" }}>
-              That combination is the company&rsquo;s point of view: a great agenda is editing applied to time.
-            </p>
-            <Link className="tlink" href="/about">Read Jessica&rsquo;s story</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 8 — Phoenix roots */}
-      <section className="section panel">
-        <div className="wrap">
-          <Kicker>Phoenix roots, professional reach</Kicker>
-          <h2 style={{ maxWidth: "22ch" }}>Built in Phoenix. Designed for outcomes anywhere.</h2>
-          <p style={{ marginTop: "1.5rem", maxWidth: "60ch" }}>
-            Phoenix has become a serious destination for professional gatherings, anchored by bioscience,
-            semiconductor, advanced manufacturing, healthcare, and higher education. We&rsquo;re rooted here and
-            work with clients nationally.
-          </p>
-          <div className="stat-band" style={{ marginTop: "3rem" }}>
-            <div className="stat">
-              <div className="figure">$200B+</div>
-              <div className="label">in capital investment in Greater Phoenix since 2020, including TSMC&rsquo;s $165B commitment.<span className="src">Visit Phoenix</span></div>
+        <section className="sec lilac">
+          <div className="wrap">
+            <div className="sec-head">
+              <span className="pill-lbl">Common questions</span>
+              <h2>How we work.</h2>
             </div>
-            <div className="stat">
-              <div className="figure">4&times;</div>
-              <div className="label">as many medical and high-tech meetings hosted in the region since 2019.<span className="src">Visit Phoenix</span></div>
-            </div>
-            <div className="stat">
-              <div className="figure">$453.7M</div>
-              <div className="label">in estimated economic impact from 70 conventions at the Phoenix Convention Center in 2025.<span className="src">City of Phoenix</span></div>
+            <div className="ag-faq">
+              {FAQS.map((f) => (
+                <div className="ag-faqitem" key={f.q}>
+                  <h4>{f.q}</h4>
+                  <p>{f.a}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 9 — Proof band (green) */}
-      <section className="section ink-bg">
-        <div className="wrap split">
-          <div className="label-col">
-            <Kicker>Proof</Kicker>
-            <h2>Grounded in how the industry is actually changing.</h2>
+        <section className="sec cta">
+          <div className="cb c1" /><div className="cb c2" /><div className="cb c3" />
+          <div className="wrap">
+            <span className="pill-lbl" style={{ background: "rgba(255,255,255,.15)", color: "#fff" }}>Start the conversation</span>
+            <h2 style={{ marginTop: "1rem" }}>Let&rsquo;s shape your agenda.</h2>
+            <p>Tell us what you&rsquo;re trying to accomplish and what would make this gathering worth the time.</p>
+            <Link className="btn white" href={CTA.primary.href}>Let&rsquo;s talk &rarr;</Link>
+            <p className="reassure">A conversation, not a pitch. We typically reply within one business day.</p>
           </div>
-          <div>
-            <p>
-              The firms that win the next decade of event growth will be the ones that can prove outcomes, not
-              just attendance. That is the entire premise of how we work.
-            </p>
-            <p style={{ marginBottom: 0, color: "var(--gold-soft)", fontFamily: "var(--serif)", fontSize: "var(--step-1)" }}>
-              The agenda is the strategy.
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 10 — Blog preview */}
-      <section className="section">
-        <div className="wrap">
-          <Kicker>From The Agenda</Kicker>
-          <h2 style={{ maxWidth: "24ch", marginBottom: "0.75rem" }}>
-            Notes on better meetings, learning, and professional connection.
-          </h2>
-          <p className="muted" style={{ marginBottom: "2.5rem" }}>Your agenda is our agenda.</p>
-          <div className="grid grid-3">
-            {POSTS.map((p) => (
-              <div className="card" key={p.slug}>
-                <p className="kicker" style={{ marginBottom: "0.75rem" }}>{p.category}</p>
-                <h3 style={{ fontSize: "var(--step-1)" }}>{p.title}</h3>
-                <p>{p.excerpt}</p>
-                <Link className="tlink" href={`/the-agenda/${p.slug}`}>Read</Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 11 — FAQ */}
-      <section className="section panel">
-        <div className="wrap split">
-          <div className="label-col">
-            <Kicker>Common questions</Kicker>
-            <h2>The basics, answered.</h2>
-          </div>
-          <Faq items={FAQS} />
-        </div>
-      </section>
-
-      {/* 12 — CTA */}
-      <section className="section ink-bg">
-        <div className="wrap">
-          <Kicker>Start the conversation</Kicker>
-          <h2 style={{ maxWidth: "18ch" }}>Let&rsquo;s shape the agenda.</h2>
-          <p className="lede" style={{ marginTop: "1.5rem" }}>
-            Tell us what you&rsquo;re trying to accomplish and what would make this gathering worth the time.
-            We&rsquo;ll take it from there.
-          </p>
-          <div className="btn-row">
-            <Link className="btn btn--ghost" href={CTA.primary.href}>{CTA.primary.label}</Link>
-          </div>
-        </div>
-      </section>
+      </div>
     </>
   );
 }

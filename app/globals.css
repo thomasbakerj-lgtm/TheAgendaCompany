@@ -464,3 +464,20 @@ html.reveal-ready .reveal.in { opacity: 1; transform: none; }
 .sf-home .form-success{background:#fff;border:1px solid var(--line);border-radius:20px;padding:2rem;box-shadow:0 24px 54px -36px rgba(92,91,234,.5);}
 .sf-home .form-success h3{font-family:var(--sf-disp);font-weight:700;color:var(--ink);}
 @media(max-width:600px){.sf-home .form-grid{grid-template-columns:1fr;}}
+
+/* ===== SOFT FUTURE — service template + The Agenda ===== */
+.sf-home .ag-cards.cols3{grid-template-columns:repeat(3,1fr);}
+@media(max-width:860px){.sf-home .ag-cards.cols3{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.sf-home .ag-cards.cols3{grid-template-columns:1fr;}}
+.sf-home .ag-positioning{font-family:var(--sf-disp);font-weight:600;font-size:clamp(1.1rem,2vw,1.35rem);margin-top:1.4rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;max-width:54ch;}
+.sf-home .ag-checklist{list-style:none;padding:0;margin:.4rem 0 0;display:flex;flex-direction:column;gap:.6rem;}
+.sf-home .ag-checklist li{position:relative;padding-left:1.8rem;color:var(--ink2);}
+.sf-home .ag-checklist li::before{content:"";position:absolute;left:0;top:.55em;width:11px;height:11px;border-radius:50%;background:var(--grad);}
+.sf-home .ag-tags{list-style:none;padding:0;margin:.4rem 0 0;display:flex;flex-wrap:wrap;gap:.6rem;}
+.sf-home .ag-tags li{font-size:.82rem;font-weight:600;color:var(--peri-deep);background:var(--lilac);border-radius:100px;padding:.45rem .95rem;}
+.sf-home .ag-article{max-width:760px;margin:0 auto;}
+.sf-home .ag-article h2{font-family:var(--sf-disp);font-weight:700;font-size:clamp(1.5rem,3.5vw,2rem);margin:2.2rem 0 .8rem;color:var(--ink);}
+.sf-home .ag-article p{font-size:1.08rem;line-height:1.75;color:var(--ink2);margin-bottom:1rem;}
+.sf-home .ag-related{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.5rem;}
+.sf-home .ag-related a{font-family:var(--sf-disp);font-weight:600;font-size:.9rem;color:var(--peri-deep);text-decoration:none;background:var(--mist);border-radius:100px;padding:.6rem 1.1rem;transition:.2s;}
+.sf-home .ag-related a:hover{color:var(--coral);}

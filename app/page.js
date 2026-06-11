@@ -41,7 +41,7 @@ export default function Home() {
       <div className="sf-home">
 
         {/* HERO */}
-        <section className="hero">
+        <section className="ag-hero">
           <div className="blob b1" /><div className="blob b2" /><div className="blob b3" />
           <svg className="hero-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
             <defs>
@@ -62,7 +62,7 @@ export default function Home() {
           <div className="wrap">
             <span className="pill-lbl">Boutique corporate event management &middot; Phoenix, AZ</span>
             <h1>Events people <span className="grad-text">actually remember</span>.</h1>
-            <p className="lede">We design and run professional gatherings around the outcome they should create. Warm, polished, handled end to end.</p>
+            <p className="ag-lede">We design and run professional gatherings around the outcome they should create. Warm, polished, handled end to end.</p>
             <div className="btns">
               <Link className="btn" href={CTA.primary.href}>Let&rsquo;s talk &rarr;</Link>
               <Link className="btn ghost" href="/method">See the method</Link>
@@ -82,15 +82,15 @@ export default function Home() {
         {/* STATS */}
         <section className="sec">
           <div className="wrap">
-            <div className="sec-head reveal">
+            <div className="sec-head ag-reveal">
               <span className="pill-lbl">Why it matters</span>
               <h2>Most events fill a room. We make sure yours is worth it.</h2>
               <p>Optimism about gathering is high &mdash; but most events still can&rsquo;t prove what they delivered. We start with the agenda so yours can.</p>
             </div>
-            <div className="stats reveal" id="sf-stats">
-              <div className="stat"><div className="fig" data-to="70" data-suf="%">0%</div><div className="lab">of the events industry can&rsquo;t prove what their events delivered.</div></div>
-              <div className="stat"><div className="fig" data-to="15" data-suf="+">0+</div><div className="lab">years designing gatherings for teams, associations, and institutions.</div></div>
-              <div className="stat"><div className="fig" data-to="100" data-suf="%">0%</div><div className="lab">agenda-first &mdash; every moment traces back to one intended outcome.</div></div>
+            <div className="stats ag-reveal" id="sf-stats">
+              <div className="ag-stat"><div className="fig" data-to="70" data-suf="%">0%</div><div className="lab">of the events industry can&rsquo;t prove what their events delivered.</div></div>
+              <div className="ag-stat"><div className="fig" data-to="15" data-suf="+">0+</div><div className="lab">years designing gatherings for teams, associations, and institutions.</div></div>
+              <div className="ag-stat"><div className="fig" data-to="100" data-suf="%">0%</div><div className="lab">agenda-first &mdash; every moment traces back to one intended outcome.</div></div>
             </div>
           </div>
         </section>
@@ -98,7 +98,7 @@ export default function Home() {
         {/* MEET */}
         <section className="sec lilac meet">
           <div className="wrap">
-            <div className="inner reveal">
+            <div className="inner ag-reveal">
               <span className="pill-lbl">Meet your planner</span>
               <h2>Hi, I&rsquo;m Jessica &mdash; and your agenda is my agenda.</h2>
               <p className="bio">An editor turned events professional with 15+ years bringing people together with purpose. I treat your gathering like it matters &mdash; because to your people, it does. You&rsquo;ll work directly with me, start to finish.</p>
@@ -110,22 +110,22 @@ export default function Home() {
         {/* METHOD */}
         <section className="sec">
           <div className="wrap">
-            <div className="sec-head reveal">
+            <div className="sec-head ag-reveal">
               <span className="pill-lbl">The Agenda Method</span>
               <h2>A simple, proven way to design a gathering that lands.</h2>
               <p>Hover or tap each step to see how we think about your event.</p>
             </div>
-            <div className="agenda reveal" id="sf-agenda">
+            <div className="ag-agenda ag-reveal" id="sf-agenda">
               {METHOD.map((m, i) => (
-                <div className={i === 0 ? "arow open" : "arow"} key={m.n}>
-                  <button className="arow-head" type="button">
+                <div className={i === 0 ? "ag-arow open" : "ag-arow"} key={m.n}>
+                  <button className="ag-arow-head" type="button">
                     <span className="badge">{m.n}</span>
-                    <span className="anm">{m.name}</span>
-                    <span className="achev">+</span>
+                    <span className="ag-anm">{m.name}</span>
+                    <span className="ag-achev">+</span>
                   </button>
-                  <div className="arow-body"><div className="arow-inner">
+                  <div className="ag-arow-body"><div className="ag-arow-inner">
                     <p>{m.body}</p>
-                    <p className="signal">{m.signal}</p>
+                    <p className="ag-signal">{m.signal}</p>
                   </div></div>
                 </div>
               ))}
@@ -135,7 +135,7 @@ export default function Home() {
 
         {/* QUOTE */}
         <section className="sec mist">
-          <div className="wrap reveal">
+          <div className="wrap ag-reveal">
             <div className="quote">
               <p>They treated our annual meeting like it mattered &mdash; because to us, it did. People are <span className="grad-text">still talking about it</span>.</p>
               <p className="by">Executive Director, professional society &middot; sample</p>
@@ -146,11 +146,11 @@ export default function Home() {
         {/* SERVICES */}
         <section className="sec">
           <div className="wrap">
-            <div className="sec-head reveal">
+            <div className="sec-head ag-reveal">
               <span className="pill-lbl">What we do</span>
               <h2>Five ways we help you gather with purpose.</h2>
             </div>
-            <div className="reveal">
+            <div className="ag-reveal">
               {SERVICES.slice(0, 5).map((s, i) => (
                 <Link className="srow" href={`/services/${s.slug}`} key={s.slug}>
                   <span className="sn">{String(i + 1).padStart(2, "0")}</span>
@@ -166,7 +166,7 @@ export default function Home() {
         {/* CTA */}
         <section className="sec cta">
           <div className="cb c1" /><div className="cb c2" /><div className="cb c3" />
-          <div className="wrap reveal">
+          <div className="wrap ag-reveal">
             <span className="pill-lbl" style={{ background: "rgba(255,255,255,.15)", color: "#fff" }}>Start the conversation</span>
             <h2 style={{ marginTop: "1rem" }}>Let&rsquo;s shape your agenda.</h2>
             <p>Tell us what you&rsquo;re trying to accomplish and what would make this gathering worth the time.</p>
